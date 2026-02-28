@@ -50,6 +50,7 @@ const ProjectDetails = () => {
       setTasks(tasksRes.data.data || []);
     } catch (error) {
       toast.error('Failed to load project details');
+      console.log("Error in fetch task:", error);
     } finally {
       setLoading(false);
     }
@@ -73,6 +74,7 @@ const ProjectDetails = () => {
       await axios.put(`/task/update/${draggableId}`, { status: newStatus });
     } catch (error) {
       toast.error('Update failed');
+      console.log("Error in update task:", error);
       fetchData();
     }
   };
@@ -117,6 +119,7 @@ const ProjectDetails = () => {
       fetchData();
     } catch (error) {
       toast.error('Delete failed');
+      console.log("Error in delete task:", error);
     } finally {
       setDeleteLoading(false);
     }
@@ -149,7 +152,7 @@ const ProjectDetails = () => {
             setForm({ title: '', description: '', priority: 'Medium', status: 'Pending', dueDate: '' });
             setShowModal(true);
           }}
-          className="bg-primary-600 text-white px-5 py-2.5 rounded-xl font-semibold flex items-center gap-2 shadow-lg shadow-primary-200 hover:bg-primary-700 transition-all font-bold"
+          className="bg-primary-600 text-white px-5 py-2.5 rounded-xl flex items-center gap-2 shadow-lg shadow-primary-200 hover:bg-primary-700 transition-all font-bold"
         >
           <Plus size={20} />
           Add Task
@@ -190,7 +193,7 @@ const ProjectDetails = () => {
                 <div
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  className="bg-slate-50/50 rounded-3xl p-4 min-w-[320px] border border-slate-200/50 min-h-[500px]"
+                  className="bg-slate-50/50 rounded-3xl p-4 min-w-[320px] border border-slate-200/50 min-h-125"
                 >
                   <div className="flex items-center justify-between mb-4 px-2">
                     <h3 className="font-bold text-slate-700 flex items-center gap-2">
