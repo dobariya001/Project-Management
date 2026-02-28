@@ -7,7 +7,9 @@ const router = require('./routes/allRoute');
 connectDB();
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: "https://project-management-khaki-delta.vercel.app/"
+}));
 app.use(express.json());
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
