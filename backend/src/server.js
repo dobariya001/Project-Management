@@ -8,7 +8,8 @@ connectDB();
 const app = express();
 
 app.use(cors({
-  origin: "https://project-management-khaki-delta.vercel.app/"
+  origin: "https://project-management-khaki-delta.vercel.app",
+  credentials: true
 }));
 app.use(express.json());
 
